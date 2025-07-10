@@ -141,7 +141,7 @@ Instructions:
 5. Ignore minor grammatical errors and typos. If the core concept is correct then mark the answer as correct
 6. The answer should demonstrate understanding of the core concept
 7. DO NOT PENALIZE FOR MINOR SPELLING ERRORS OR GRAMMATICAL ERRORS
-8. Always use the acceptable answers when evaluating whether an answer is correct and avoid relying on your knowledge cutoff date"""
+"""
                 }
             ]
 
