@@ -125,7 +125,7 @@ Instructions:
 2. Be flexible and allow for reasonable variations in wording, spelling, and phrasing
 3. Accept synonyms and equivalent expressions
 4. For numerical answers, accept both written and digit forms (e.g., "four" and "4")
-5. Ignore minor grammatical errors and typos
+5. Ignore minor grammatical errors and typos. If the core concept is correct then mark the answer as correct.
 6. The answer should demonstrate understanding of the core concept
 
 Respond with a JSON object containing:
