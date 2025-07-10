@@ -197,8 +197,8 @@ class CitizenshipQuiz {
             this.showFeedback(evaluation, question);
 
         } catch (error) {
-            console.error('Evaluation error:', error);
-            alert('Could not evaluate your answer. Please try again.');
+            console.error('OpenAI evaluation failed:', error);
+            alert('Could not evaluate your answer using AI. Falling back to simple matching. Please try again.');
             document.getElementById('submit-answer').disabled = false;
         } finally {
             this.showLoading(false);
