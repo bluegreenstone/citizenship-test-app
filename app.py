@@ -6,9 +6,15 @@ from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 import openai
+from pydantic import BaseModel
 
 # Load environment variables
 load_dotenv()
+
+# Pydantic model for structured output
+class EvaluationResponse(BaseModel):
+    isCorrect: bool
+    feedback: str
 
 app = Flask(__name__)
 CORS(app)
@@ -112,46 +118,47 @@ class CitizenshipQuiz:
             return self._evaluate_simple_matching(question_data, user_answer)
     
     def _evaluate_with_openai(self, question_data, user_answer):
-        """Use OpenAI to evaluate the answer using responses format"""
+        """Use OpenAI to evaluate the answer using structured outputs"""
         try:
-            input_text = f"""Evaluate this U.S. citizenship test answer:
+            input_messages = [
+                {
+                    "role": "system", 
+                    "content": "You are an expert evaluator for U.S. citizenship test answers. Evaluate answers based on correctness while being flexible with minor spelling errors, grammatical mistakes, and reasonable variations in wording."
+                },
+                {
+                    "role": "user",
+                    "content": f"""Evaluate this U.S. citizenship test answer:
 
 Question: "{question_data['question']}"
 User's answer: "{user_answer}"
 Acceptable answers: {', '.join([f'"{ans}"' for ans in question_data['answer']])}
 
 Instructions:
-1. Determine if the user's answer is correct based on the acceptable answers, ignoring case-sensitivity and minor spelling errors in the user's answer
+1. Determine if the user's answer is correct based on the acceptable answers, ignoring case-sensitivity and minor spelling errors
 2. Be flexible and allow for reasonable variations in wording, spelling, and phrasing
 3. Accept synonyms and equivalent expressions
 4. For numerical answers, accept both written and digit forms (e.g., "four" and "4")
-5. Ignore minor grammatical errors and typos. If the core concept is correct then mark the answer as correct.
+5. Ignore minor grammatical errors and typos. If the core concept is correct then mark the answer as correct
 6. The answer should demonstrate understanding of the core concept
-7. DO NOT PENALIZE FOR MINOR SPELLING ERRORS OR GRAMMATICAL ERRORS
+7. DO NOT PENALIZE FOR MINOR SPELLING ERRORS OR GRAMMATICAL ERRORS"""
+                }
+            ]
 
-Respond with a JSON object containing:
-- "isCorrect": boolean (true if correct, false if incorrect)
-- "feedback": string (brief explanation of why the answer is correct or incorrect, and guidance if incorrect)
-
-Example response:
-{{"isCorrect": true, "feedback": "Correct! Your answer demonstrates good understanding of the concept."}}"""
-
-            print("Calling OpenAI responses API...")
-            response = self.openai_client.responses.create(
+            print("Calling OpenAI responses.parse API...")
+            response = self.openai_client.responses.parse(
                 model="gpt-4o-mini",
-                input=input_text
+                input=input_messages,
+                text_format=EvaluationResponse
             )
             
-            result = response.output_text.strip()
-            print(f"OpenAI response: {result}")
+            result = response.output_parsed
+            print(f"OpenAI structured response: {result}")
             
-            try:
-                parsed_result = json.loads(result)
-                print(f"Parsed result: {parsed_result}")
-                return parsed_result
-            except json.JSONDecodeError:
-                print(f"Failed to parse OpenAI response: {result}")
-                return self._evaluate_simple_matching(question_data, user_answer)
+            # Convert Pydantic model to dict for JSON serialization
+            return {
+                "isCorrect": result.isCorrect,
+                "feedback": result.feedback
+            }
 
         except Exception as e:
             print(f"OpenAI API error: {e}")
