@@ -127,6 +127,7 @@ Instructions:
 4. For numerical answers, accept both written and digit forms (e.g., "four" and "4")
 5. Ignore minor grammatical errors and typos. If the core concept is correct then mark the answer as correct.
 6. The answer should demonstrate understanding of the core concept
+7. DO NOT PENALIZE FOR MINOR SPELLING ERRORS OR GRAMMATICAL ERRORS
 
 Respond with a JSON object containing:
 - "isCorrect": boolean (true if correct, false if incorrect)
