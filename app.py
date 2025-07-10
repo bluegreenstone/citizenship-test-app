@@ -121,7 +121,7 @@ User's answer: "{user_answer}"
 Acceptable answers: {', '.join([f'"{ans}"' for ans in question_data['answer']])}
 
 Instructions:
-1. Determine if the user's answer is correct based on the acceptable answers
+1. Determine if the user's answer is correct based on the acceptable answers, ignoring case-sensitivity and minor spelling errors in the user's answer
 2. Be flexible and allow for reasonable variations in wording, spelling, and phrasing
 3. Accept synonyms and equivalent expressions
 4. For numerical answers, accept both written and digit forms (e.g., "four" and "4")
