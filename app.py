@@ -214,6 +214,27 @@ def get_categories():
     categories = quiz.get_categories()
     return jsonify(categories)
 
+@app.route('/api/flashcards')
+def get_flashcards():
+    """Get questions formatted for flashcard mode"""
+    category = request.args.get('category')
+    count = int(request.args.get('count', 20))
+    
+    questions = quiz.get_random_questions(count=count, category=category)
+    
+    # Format questions for flashcard display
+    flashcards = []
+    for q in questions:
+        flashcards.append({
+            'id': q['id'],
+            'front': q['question'],
+            'back': ', '.join(q['answer']),  # Join multiple acceptable answers
+            'category': q['category'],
+            'subcategory': q.get('subcategory', '')
+        })
+    
+    return jsonify(flashcards)
+
 @app.route('/api/evaluate', methods=['POST'])
 def evaluate_answer():
     """Evaluate user answer"""

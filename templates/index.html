@@ -32,6 +32,12 @@
                         <p>Focus on a specific category</p>
                     </div>
                 </button>
+                <button id="flashcard-btn" class="mode-btn">
+                    <div>
+                        <h3>Flashcard Mode</h3>
+                        <p>Study with interactive flashcards</p>
+                    </div>
+                </button>
             </div>
         </div>
 
@@ -111,6 +117,117 @@
             <h2>Review Incorrect Answers</h2>
             <div id="review-content"></div>
             <button id="back-to-results" class="back-btn"><i data-feather="arrow-left"></i> Back to Results</button>
+        </div>
+
+        <!-- Flashcard Setup Screen -->
+        <div id="flashcard-setup" class="screen">
+            <h2>Flashcard Settings</h2>
+            <div class="flashcard-options">
+                <div class="option-group">
+                    <label for="flashcard-count">Number of flashcards:</label>
+                    <select id="flashcard-count">
+                        <option value="10">10</option>
+                        <option value="20" selected>20</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                        <option value="100">All available</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="flashcard-category">Category (optional):</label>
+                    <select id="flashcard-category">
+                        <option value="">All Categories</option>
+                        <!-- Categories will be populated here -->
+                    </select>
+                </div>
+                <div class="setup-actions">
+                    <button id="start-flashcards" class="primary-btn">Start Flashcards <i data-feather="play"></i></button>
+                    <button id="back-from-flashcard-setup" class="back-btn"><i data-feather="arrow-left"></i> Back</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flashcard Study Screen -->
+        <div id="flashcard-screen" class="screen">
+            <div class="flashcard-header">
+                <div class="flashcard-progress">
+                    <span id="flashcard-current">1</span> of <span id="flashcard-total">20</span>
+                </div>
+                <div class="flashcard-stats">
+                    <span class="stat correct">✓ <span id="correct-count">0</span></span>
+                    <span class="stat incorrect">✗ <span id="incorrect-count">0</span></span>
+                </div>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front active">
+                            <div class="card-label">Question</div>
+                            <div class="card-content" id="flashcard-question">
+                                Click to reveal the question
+                            </div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="card-label">Answer</div>
+                            <div class="card-content" id="flashcard-answer">
+                                Click to reveal the answer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-hint" id="flashcard-hint">
+                    Click the card to flip and see the answer
+                </div>
+                
+                <div class="flashcard-controls hidden" id="flashcard-controls">
+                    <p>Did you get it correct?</p>
+                    <div class="feedback-buttons">
+                        <button id="mark-incorrect" class="feedback-btn incorrect-btn">
+                            <i data-feather="x"></i> Incorrect
+                        </button>
+                        <button id="mark-correct" class="feedback-btn correct-btn">
+                            <i data-feather="check"></i> Correct
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-navigation">
+                <button id="quit-flashcards" class="quit-btn"><i data-feather="x-circle"></i> Quit</button>
+            </div>
+        </div>
+
+        <!-- Flashcard Results Screen -->
+        <div id="flashcard-results" class="screen">
+            <h2>Flashcard Session Complete!</h2>
+            <div class="flashcard-summary">
+                <div class="summary-stats">
+                    <div class="stat-card correct">
+                        <div class="stat-number" id="final-correct">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-card incorrect">
+                        <div class="stat-number" id="final-incorrect">0</div>
+                        <div class="stat-label">Incorrect</div>
+                    </div>
+                    <div class="stat-card total">
+                        <div class="stat-number" id="final-total">0</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                </div>
+                <div class="accuracy-display">
+                    <div class="accuracy-circle">
+                        <span id="accuracy-percentage">0%</span>
+                    </div>
+                    <p>Accuracy Rate</p>
+                </div>
+            </div>
+            <div class="flashcard-actions">
+                <button id="study-again" class="primary-btn"><i data-feather="refresh-cw"></i> Study Again</button>
+                <button id="back-to-mode-from-flashcards" class="secondary-btn"><i data-feather="home"></i> Main Menu</button>
+            </div>
         </div>
 
         <!-- Loading Overlay -->
