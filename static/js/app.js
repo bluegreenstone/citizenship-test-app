@@ -262,6 +262,87 @@ class CitizenshipQuiz {
         acceptableAnswersContainer.style.display = evaluation.isCorrect ? 'none' : 'block';
 
         feedbackEl.classList.remove('hidden');
+        
+        // Trigger patriotic celebration for correct answers
+        if (evaluation.isCorrect) {
+            this.triggerPatrioticCelebration();
+        }
+    }
+
+    // --- PATRIOTIC ANIMATIONS ---
+    triggerPatrioticCelebration() {
+        this.createFireworks();
+        this.createConfetti();
+        this.showCelebrationText();
+    }
+
+    createFireworks() {
+        const container = this.getOrCreateFireworksContainer();
+        const colors = ['red', 'blue', 'white'];
+        
+        for (let i = 0; i < 6; i++) {
+            setTimeout(() => {
+                for (let j = 0; j < 8; j++) {
+                    const firework = document.createElement('div');
+                    firework.className = `firework ${colors[Math.floor(Math.random() * colors.length)]}`;
+                    
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight * 0.6 + window.innerHeight * 0.2;
+                    
+                    firework.style.left = x + 'px';
+                    firework.style.top = y + 'px';
+                    firework.style.animationDelay = (Math.random() * 0.5) + 's';
+                    
+                    container.appendChild(firework);
+                    
+                    setTimeout(() => firework.remove(), 1500);
+                }
+            }, i * 200);
+        }
+    }
+
+    createConfetti() {
+        const container = this.getOrCreateFireworksContainer();
+        const colors = ['red', 'blue', 'white'];
+        
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.className = `confetti star ${colors[Math.floor(Math.random() * colors.length)]}`;
+                
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.animationDelay = (Math.random() * 2) + 's';
+                confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+                
+                container.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 4000);
+            }, i * 100);
+        }
+    }
+
+    showCelebrationText() {
+        const celebrations = ['Excellent!', 'Well Done!', 'Patriotic!', 'Outstanding!', 'Bravo!'];
+        const text = celebrations[Math.floor(Math.random() * celebrations.length)];
+        
+        const celebration = document.createElement('div');
+        celebration.className = 'celebration-text';
+        celebration.textContent = text;
+        
+        document.body.appendChild(celebration);
+        
+        setTimeout(() => celebration.remove(), 2000);
+    }
+
+    getOrCreateFireworksContainer() {
+        let container = document.getElementById('fireworks-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'fireworks-container';
+            container.className = 'fireworks-container';
+            document.body.appendChild(container);
+        }
+        return container;
     }
 
     nextQuestion() {
@@ -407,6 +488,8 @@ class CitizenshipQuiz {
         if (isCorrect) {
             this.flashcardStats.correct++;
             document.getElementById('correct-count').textContent = this.flashcardStats.correct;
+            // Add celebration for correct flashcard answers
+            this.triggerPatrioticCelebration();
         } else {
             this.flashcardStats.incorrect++;
             document.getElementById('incorrect-count').textContent = this.flashcardStats.incorrect;

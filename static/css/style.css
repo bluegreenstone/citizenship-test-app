@@ -6,39 +6,92 @@
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     --font-mono: 'Roboto Mono', monospace;
 
-    /* Light Mode (Default) */
-    --bg-primary: #f8f9fa;
-    --bg-secondary: #ffffff;
-    --text-primary: #212529;
-    --text-secondary: #6c757d;
-    --border-color: #dee2e6;
-    --shadow-color: rgba(0, 0, 0, 0.05);
-    --accent-primary: #007bff;
-    --accent-primary-dark: #0056b3;
-    --accent-secondary: #6c757d;
-    --accent-secondary-dark: #5a6268;
-    --success: #28a745;
-    --danger: #dc3545;
-    --success-bg: #e9f7ec;
-    --danger-bg: #fdecea;
-    --gradient-bg: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    /* Patriotic Light Mode */
+    --bg-primary: #e2e8f0;
+    --bg-secondary: #f1f5f9;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(37, 99, 235, 0.08);
+    
+    /* Patriotic Color Palette */
+    --patriot-red: #dc2626;
+    --patriot-red-light: #ef4444;
+    --patriot-red-dark: #b91c1c;
+    --patriot-blue: #1d4ed8;
+    --patriot-blue-light: #3b82f6;
+    --patriot-blue-dark: #1e40af;
+    --patriot-navy: #1e3a8a;
+    --patriot-silver: #f1f5f9;
+    
+    /* Updated accent colors with patriotic theme */
+    --accent-primary: var(--patriot-blue);
+    --accent-primary-dark: var(--patriot-blue-dark);
+    --accent-secondary: var(--patriot-navy);
+    --accent-secondary-dark: #1e40af;
+    --success: #059669;
+    --danger: var(--patriot-red);
+    --success-bg: #f0fdf4;
+    --danger-bg: #fef7f7;
+    
+    /* Patriotic gradients */
+    --gradient-bg: linear-gradient(135deg, #f1f8ff 0%, #e6f3ff 25%, #fdf4f4 50%, #e6f3ff 75%, #f1f8ff 100%);
+    --gradient-primary: linear-gradient(135deg, var(--patriot-blue) 0%, var(--patriot-blue-light) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--patriot-red) 0%, var(--patriot-red-light) 100%);
+    --gradient-flag: linear-gradient(90deg, var(--patriot-red) 0%, #f1f5f9 33%, var(--patriot-blue) 66%);
 }
 
-/* Dark Mode */
+/* Patriotic Dark Mode */
 body.dark-mode {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2c2c2c;
-    --text-primary: #f8f9fa;
-    --text-secondary: #adb5bd;
-    --border-color: #495057;
-    --shadow-color: rgba(255, 255, 255, 0.05);
-    --accent-primary: #0d6efd;
-    --accent-primary-dark: #0b5ed7;
-    --success: #198754;
-    --danger: #dc3545;
-    --success-bg: #1c3a24;
-    --danger-bg: #3e2020;
-    --gradient-bg: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-color: rgba(239, 68, 68, 0.1);
+    
+    /* Dark mode patriotic colors */
+    --accent-primary: var(--patriot-blue-light);
+    --accent-primary-dark: var(--patriot-blue);
+    --success: #10b981;
+    --danger: var(--patriot-red-light);
+    --success-bg: #064e3b;
+    --danger-bg: #450a0a;
+    
+    /* Dark patriotic gradients */
+    --gradient-bg: linear-gradient(135deg, #0f1729 0%, #1e2a4a 25%, #4a1a1a 50%, #1e2a4a 75%, #0f1729 100%) !important;
+    --gradient-primary: linear-gradient(135deg, var(--patriot-blue-light) 0%, var(--patriot-blue) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--patriot-red-light) 0%, var(--patriot-red) 100%);
+    --gradient-flag: linear-gradient(90deg, var(--patriot-red-dark) 0%, #1e293b 33%, var(--patriot-blue) 66%);
+}
+
+/* Dark mode overrides for enhanced cards */
+body.dark-mode header {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 
+        0 20px 40px rgba(239, 68, 68, 0.2),
+        0 8px 16px rgba(29, 78, 216, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .screen {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 
+        0 25px 50px rgba(239, 68, 68, 0.2),
+        0 12px 24px rgba(29, 78, 216, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .mode-btn, 
+body.dark-mode .category-btn {
+    background: linear-gradient(135deg, rgba(51, 65, 85, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 
+        0 8px 20px rgba(239, 68, 68, 0.15),
+        0 4px 8px rgba(29, 78, 216, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* --- BASE & RESET --- */
@@ -55,6 +108,35 @@ body {
     background: var(--gradient-bg);
     min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+/* Animated star pattern background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, var(--patriot-blue), transparent),
+        radial-gradient(2px 2px at 40% 70%, var(--patriot-red), transparent),
+        radial-gradient(1px 1px at 90% 40%, var(--patriot-blue), transparent),
+        radial-gradient(1px 1px at 50% 50%, var(--patriot-red), transparent),
+        radial-gradient(2px 2px at 80% 10%, var(--patriot-blue), transparent);
+    background-repeat: repeat;
+    background-size: 100px 100px, 120px 120px, 80px 80px, 90px 90px, 110px 110px;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+    animation: starTwinkle 8s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 0.02; transform: scale(1); }
+    50% { opacity: 0.05; transform: scale(1.02); }
+    100% { opacity: 0.03; transform: scale(1); }
 }
 
 .container {
@@ -73,15 +155,59 @@ header {
     align-items: center;
     color: var(--text-primary);
     margin-bottom: 2rem;
-    padding: 1rem;
-    background: var(--bg-secondary);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(29, 78, 216, 0.15),
+        0 8px 16px rgba(220, 38, 38, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(29, 78, 216, 0.2);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-flag);
+    border-radius: 18px;
+    opacity: 0.08;
+    z-index: -1;
 }
 
 header h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(29, 78, 216, 0.3);
+    letter-spacing: -0.02em;
+    position: relative;
+}
+
+header h1::after {
+    content: '🇺🇸';
+    position: absolute;
+    right: -3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    animation: flagWave 3s ease-in-out infinite;
+}
+
+@keyframes flagWave {
+    0%, 100% { transform: translateY(-50%) rotate(-2deg) scale(1); }
+    25% { transform: translateY(-50%) rotate(1deg) scale(1.05); }
+    50% { transform: translateY(-50%) rotate(-1deg) scale(1.02); }
+    75% { transform: translateY(-50%) rotate(2deg) scale(1.05); }
 }
 
 .theme-toggle {
@@ -108,12 +234,36 @@ header h1 {
 /* --- SCREEN MANAGEMENT --- */
 .screen {
     display: none;
-    background: var(--bg-secondary);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px var(--shadow-color);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.9) 100%);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 
+        0 25px 50px rgba(29, 78, 216, 0.15),
+        0 12px 24px rgba(220, 38, 38, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     flex: 1;
-    animation: fadeIn 0.5s ease;
+    animation: libertyRise 0.6s ease;
+    border: 2px solid rgba(29, 78, 216, 0.15);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+}
+
+.screen#mode-selection {
+    animation: eagleSoar 0.8s ease;
+}
+
+.screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-flag);
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0.06;
 }
 
 .screen.active {
@@ -123,6 +273,28 @@ header h1 {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes eagleSoar {
+    from { 
+        opacity: 0; 
+        transform: translateX(-100px) translateY(50px) scale(0.8); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0) translateY(0) scale(1); 
+    }
+}
+
+@keyframes libertyRise {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95) rotateX(10deg); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1) rotateX(0deg); 
+    }
 }
 
 /* --- BUTTONS --- */
@@ -141,19 +313,42 @@ button {
 
 .mode-btn, .category-btn {
     width: 100%;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.6) 100%);
+    border: 2px solid rgba(29, 78, 216, 0.2);
     text-align: left;
+    border-radius: 16px;
+    box-shadow: 
+        0 8px 20px rgba(29, 78, 216, 0.1),
+        0 4px 8px rgba(220, 38, 38, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+.mode-btn::before, .category-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-flag);
+    border-radius: 14px;
+    opacity: 0.03;
+    z-index: -1;
 }
 
 .mode-btn:hover, .category-btn:hover {
-    background: var(--accent-primary);
+    background: var(--gradient-primary);
     color: white;
     border-color: var(--accent-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.2);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        0 15px 35px rgba(29, 78, 216, 0.3),
+        0 8px 16px rgba(220, 38, 38, 0.15);
 }
 
 .mode-btn h3, .category-btn {
@@ -178,27 +373,32 @@ button {
 }
 
 .primary-btn, .submit-btn, .next-btn {
-    background: var(--accent-primary);
+    background: var(--gradient-primary);
     color: white;
     padding: 0.75rem 1.5rem;
     font-weight: 600;
+    border: 2px solid var(--accent-primary);
 }
 
 .primary-btn:hover, .submit-btn:hover, .next-btn:hover {
     background: var(--accent-primary-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4);
+    border-color: var(--accent-primary-dark);
 }
 
 .secondary-btn, .back-btn {
-    background: var(--accent-secondary);
+    background: var(--gradient-secondary);
     color: white;
     padding: 0.75rem 1.5rem;
     font-weight: 500;
+    border: 2px solid var(--patriot-red);
 }
 
 .secondary-btn:hover, .back-btn:hover {
-    background: var(--accent-secondary-dark);
+    background: var(--patriot-red-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
 .quit-btn {
@@ -258,7 +458,7 @@ button {
     font-family: inherit;
     resize: vertical;
     margin-bottom: 1.5rem;
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
     color: var(--text-primary);
     transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -323,6 +523,96 @@ button {
 @keyframes slideInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- PATRIOTIC ANIMATIONS --- */
+.fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: fireworkExplode 1.5s ease-out forwards;
+}
+
+.firework.red { background: var(--patriot-red); box-shadow: 0 0 10px var(--patriot-red); }
+.firework.blue { background: var(--patriot-blue); box-shadow: 0 0 10px var(--patriot-blue); }
+.firework.white { background: white; box-shadow: 0 0 10px white; }
+
+@keyframes fireworkExplode {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    animation: confettiFall 3s ease-out forwards;
+}
+
+.confetti.star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.confetti.red { background: var(--patriot-red); }
+.confetti.blue { background: var(--patriot-blue); }
+.confetti.white { background: white; }
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotateZ(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotateZ(720deg);
+        opacity: 0;
+    }
+}
+
+.celebration-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--patriot-blue);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: celebrationBounce 2s ease-out forwards;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+@keyframes celebrationBounce {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 0;
+    }
 }
 
 /* --- RESULTS --- */
@@ -484,18 +774,32 @@ button {
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid var(--accent-primary);
+    border-top: 4px solid var(--patriot-red);
+    border-right: 4px solid var(--patriot-blue);
+    border-bottom: 4px solid white;
+    border-left: 4px solid var(--patriot-blue);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: patrioticSpin 1.2s ease-in-out infinite;
     margin-bottom: 1rem;
+    box-shadow: 0 0 20px rgba(29, 78, 216, 0.3);
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes patrioticSpin {
+    0% { 
+        transform: rotate(0deg) scale(1);
+        box-shadow: 0 0 20px rgba(29, 78, 216, 0.3);
+    }
+    50% { 
+        transform: rotate(180deg) scale(1.1);
+        box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+    }
+    100% { 
+        transform: rotate(360deg) scale(1);
+        box-shadow: 0 0 20px rgba(29, 78, 216, 0.3);
+    }
 }
 
 .loading-overlay p {
@@ -595,7 +899,7 @@ button {
     padding: 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
     color: var(--text-primary);
     font-size: 1rem;
     font-family: inherit;
@@ -752,25 +1056,27 @@ button {
 }
 
 .correct-btn {
-    background: var(--success);
+    background: linear-gradient(135deg, var(--success) 0%, #10b981 100%);
     color: white;
     border: 2px solid var(--success);
 }
 
 .correct-btn:hover {
-    background: transparent;
-    color: var(--success);
+    background: var(--success);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
 }
 
 .incorrect-btn {
-    background: var(--danger);
+    background: var(--gradient-secondary);
     color: white;
     border: 2px solid var(--danger);
 }
 
 .incorrect-btn:hover {
-    background: transparent;
-    color: var(--danger);
+    background: var(--patriot-red-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
 .flashcard-navigation {
